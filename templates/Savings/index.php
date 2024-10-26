@@ -5,8 +5,12 @@
  */
 ?>
 <div class="savings index content">
-    <?= $this->Html->link(__('New Saving'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Savings') ?></h3>
+    <div>
+        <?= $this->Html->link(__('New Saving'), ['action' => 'add'], ['class' => 'button float-left']) ?>
+        <?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'button float-right']) ?>
+
+    </div>
+    <br><br><h3><?= __('Savings') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>

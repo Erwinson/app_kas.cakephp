@@ -75,6 +75,8 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/siswa/ubah/*', ['controller' => 'Users', 'action' => 'edit/{id}']);
         $builder->connect('/siswa/hapus/*', ['controller' => 'Users', 'action' => 'delete/{id}']);
         $builder->connect('/siswa/detail/*', ['controller' => 'Users', 'action' => 'view/{id}']);
+        $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+        $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
         /*
          * Connect catchall routes for all controllers.
          *
