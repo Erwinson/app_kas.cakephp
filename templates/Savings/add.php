@@ -5,25 +5,46 @@
  * @var \Cake\Collection\CollectionInterface|string[] $users
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Savings'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
-        <div class="savings form content">
-            <?= $this->Form->create($saving) ?>
-            <fieldset>
-                <legend><?= __('Add Saving') ?></legend>
-                <?php
-                    echo $this->Form->control('nominal');
-                    echo $this->Form->control('status');
-                    echo $this->Form->control('user_id', ['options' => $users]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <legend><?= __('Add Savings') ?></legend>
+                        <?= $this->Html->link(__('<i class="bi bi-list-ul"></i>'), ['action' => 'index'], ['class' => 'btn btn-secondary', 'escape' => false]) ?>
+                    </div>
+                    <?= $this->Form->create($saving) ?>
+                    <fieldset>
+                        <div class="form-group mb-3">
+                            <?= $this->Form->control('nominal', [
+                                'class' => 'form-control',
+                                'label' => 'Nominal',
+                                'required' => true
+                            ]) ?>
+                        </div>
+                        <div class="form-group mb-3">
+                            <?= $this->Form->control('status', [
+                                'class' => 'form-control',
+                                'label' => 'Status',
+                                'required' => true
+                            ]) ?>
+                        </div>
+                        <div class="form-group mb-3">
+                            <?= $this->Form->control('user_id', [
+                                'options' => $users,
+                                'class' => 'form-select',
+                                'label' => 'User',
+                                'empty' => 'Select User',
+                                'required' => true
+                            ]) ?>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="mt-2">
+                <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+            </div>
             <?= $this->Form->end() ?>
         </div>
     </div>

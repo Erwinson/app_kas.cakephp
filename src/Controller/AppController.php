@@ -49,5 +49,9 @@ class AppController extends Controller
          */
         //$this->loadComponent('FormProtection');
         $this->loadComponent('Authentication.Authentication');
+
+        $userLogin=$this->request->getSession()->read();
+        
+        $this->set(compact('userLogin'));
     }
 }

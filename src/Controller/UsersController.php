@@ -93,6 +93,12 @@ class UsersController extends AppController
         $user = $this->Users->get($id, contain: ['Groups', 'Savings']);
         $this->set(compact('user'));
     }
+    
+    public function profile($id = null)
+    {
+        $user = $this->Users->get($id, contain: ['Groups', 'Savings']);
+        $this->set(compact('user'));
+    }
 
     /**
      * Add method

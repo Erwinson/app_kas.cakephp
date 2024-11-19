@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="row container mt-3">
+<div class="row mt-3 container">
     <aside class="col-md-2">
         <div class="side-nav mb-3">
             <h4 class="heading"><?= __('Actions') ?></h4>
@@ -18,59 +18,56 @@
     </aside>
 
     <div class="col-md-9">
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <h3 class="mb-4 border-bottom pb-2"><?= h($user->name) ?></h3>
-                <table class="table table-striped">
-                    <tr>
-                        <th><?= __('NISN') ?></th>
-                        <td><?= h($user->nisn) ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Name') ?></th>
-                        <td><?= h($user->name) ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Email') ?></th>
-                        <td><?= h($user->email) ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Phone') ?></th>
-                        <td><?= h($user->phone) ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Photo') ?></th>
-                        <td><?= h($user->photo) ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Status') ?></th>
-                        <td><?= h($user->status) ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Is Active') ?></th>
-                        <td><?= h($user->is_active) ? __('Yes') : __('No') ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Group') ?></th>
-                        <td><?= $user->has('group') ? $this->Html->link($user->group->name, ['controller' => 'Groups', 'action' => 'view', $user->group->id]) : __('N/A') ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('ID') ?></th>
-                        <td><?= $this->Number->format($user->id) ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Created') ?></th>
-                        <td><?= h($user->created) ?></td>
-                    </tr>
-                    <tr>
-                        <th><?= __('Modified') ?></th>
-                        <td><?= h($user->modified) ?></td>
-                    </tr>
-                </table>
+        <div class="users view content border p-4 rounded">
+            <h3 class="mb-4 border-bottom pb-2"><?= h($user->name) ?></h3>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th><?= __('NISN') ?></th>
+                    <td><?= h($user->nisn) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Name') ?></th>
+                    <td><?= h($user->name) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Email') ?></th>
+                    <td><?= h($user->email) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Phone') ?></th>
+                    <td><?= h($user->phone) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Photo') ?></th>
+                    <td><?= h($user->photo) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Status') ?></th>
+                    <td><?= h($user->status) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Is Active') ?></th>
+                    <td><?= h($user->is_active) ? __('Yes') : __('No') ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Group') ?></th>
+                    <td><?= $user->has('group') ? $this->Html->link($user->group->name, ['controller' => 'Groups', 'action' => 'view', $user->group->id]) : __('N/A') ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('ID') ?></th>
+                    <td><?= $this->Number->format($user->id) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Created') ?></th>
+                    <td><?= h($user->created) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Modified') ?></th>
+                    <td><?= h($user->modified) ?></td>
+                </tr>
+            </table>
 
-            </div>
-
-            <div class="container related mt-4">
+            <div class="related mt-4">
                 <h4><?= __('Related Savings') ?></h4>
                 <?php if (!empty($user->savings)) : ?>
                 <div class="table-responsive">

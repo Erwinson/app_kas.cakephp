@@ -100,4 +100,45 @@ class SavingsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function income($month = null, $year = null){
+        $income = $this->Savings->find()
+            ->contain(['Users'=>function($query){
+                return $query->contain('Groups');
+            }])
+            ->where(["Savings.modified LIKE '%$year-$month%' AND Savings.status = 'income'"])
+            ->all();
+        $this->set(compact('income'));
+    }
+    
+    public function outcome($month = null, $year = null){
+        $outcome = $this->Savings->find()
+            ->contain(['Users'=>function($query){
+                return $query->contain('Groups');
+            }])
+            ->where(["Savings.modified LIKE '%$year-$month%' AND Savings.status = 'outcome'"])
+            ->all();
+        $this->set(compact('outcome'));
+    }
+
+    public function perStudent()
+    {
+        $PerStudent = $this->Savings->find()
+        ->contain(['Users' => function ($query) {
+            return $query->contain('Groups');
+            }])
+
+            ->select([
+                'user_id',
+                'users.name',
+                'total_nominal' => $this->Savings->find()->func()->sum('Savings.nominal'),
+                'created' => 'Savings.created' // Include the created timestamp
+            ])
+
+            ->where(['Savings.status' => 'income']) 
+            ->group('user_id')
+            ->all();
+
+        $this->set(compact('PerStudent'));
+    }
 }
